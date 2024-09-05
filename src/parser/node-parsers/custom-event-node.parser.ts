@@ -47,6 +47,7 @@ export class CustomEventNodeParser extends NodeParser {
             "CustomFunctionName": (node: CustomEventNode, value: string) => {
                 node.customFunctionName = value.replace(/"/g, '');
                 node.title = node.customFunctionName;
+                // @ts-ignore
                 node.subTitles.unshift({text: 'Custom Event'});
             },
             "FunctionFlags": (node: CustomEventNode, value: string) => {
@@ -55,7 +56,9 @@ export class CustomEventNodeParser extends NodeParser {
                 node.replicationType = this.getReplicationType(node.functionFlags);
                 if (node.replicationType !== ReplicationType.NotReplicated) {
                     const repKey = ReplicationType[node.replicationType];
+                    // @ts-ignore
                     const text = CustomEventNodeParser.REPLICATION_TYPE_TEXTS[repKey];
+                    // @ts-ignore
                     node.subTitles.unshift({text, orderIndex: 1});
                 }
             },
@@ -73,8 +76,10 @@ export class CustomEventNodeParser extends NodeParser {
     private getReplicationType(functionFlags: number): ReplicationType {
         for (const prop in CustomEventNodeParser.FUNCTION_FLAG_BIT_MASKS) {
             if (Object.prototype.hasOwnProperty.call(CustomEventNodeParser.FUNCTION_FLAG_BIT_MASKS, prop)) {
+                // @ts-ignore
                 const bitMask = CustomEventNodeParser.FUNCTION_FLAG_BIT_MASKS[prop];
                 if((functionFlags & bitMask) != 0) {
+                    // @ts-ignore
                     return ReplicationType[prop];
                 }
             }

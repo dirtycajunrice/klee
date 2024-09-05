@@ -110,6 +110,7 @@ export class GenericNodeParser extends NodeParser {
             name: header.name,
             title: header.name,
             subTitles: [],
+            // @ts-ignore
             guid: undefined,
             pos: new Vector2(0, 0),
             sourceText: data.lines.join('\n'),
@@ -183,10 +184,11 @@ export class GenericNodeParser extends NodeParser {
 
         data = data.trim();
         data = data.substr(1, data.length - 2);
-
+        // @ts-ignore
         const propertyParser = this._customPropertyParsers[type];
         if(!propertyParser) {
             console.info(`There is no implementation for custom property type '${type}'. Skip this property`);
+            // @ts-ignore
             return;
         }
 
@@ -214,6 +216,7 @@ export class GenericNodeParser extends NodeParser {
         // Hides name of the exec pin if it is the only one of its type (pin direction).
         for (const pinDirection in execPinsByDirection) {
             if (Object.prototype.hasOwnProperty.call(execPinsByDirection, pinDirection)) {
+                // @ts-ignore
                 const counter = execPinsByDirection[pinDirection] as Array<PinProperty>;
                 if(counter.length == 1) {
                     counter[0].hideName = true;

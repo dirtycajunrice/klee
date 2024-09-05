@@ -1,6 +1,13 @@
 {
     "compilerOptions": {
-        "module": "ES6",
+        "module": "ESNext",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "skipLibCheck": true,
+        "strictNullChecks": false,
+        "moduleResolution": "NodeNext",
+        "noImplicitAny": false,
         "target": "es2020",
         "declaration": true,
         "outDir": "./dist/",
