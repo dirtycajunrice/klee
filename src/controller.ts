@@ -70,7 +70,7 @@ export class Controller {
 
     onKeydown(ev : KeyboardEvent) {
         for (const action of this._actions.filter(a => a.keycode === ev.code)) {
-            if(action.ctrl !== ev.ctrlKey) continue;
+            if(action.ctrl !== ev.ctrlKey && action.ctrl !== ev.metaKey) continue;
 
             if (action.callback(ev)) {
                 ev.preventDefault();
@@ -279,4 +279,3 @@ export class Controller {
 function InteractableControl() {
     throw new Error("Function not implemented.");
 }
-

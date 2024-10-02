@@ -44,12 +44,12 @@ export class Application {
             keycode: 'Home',
             callback: this.recenterCamera.bind(this),
         })
-
         this._controller.registerAction({
-            ctrl: true,
-            keycode: 'KeyV',
-            callback: this.pasteClipboardContentToCanvas.bind(this)
-        });
+            ctrl: false,
+            keycode: 'Home',
+            callback: this.recenterCamera.bind(this),
+        })
+
         this._element.onpaste = (ev) => this.onPaste(ev);
 
         window.addEventListener('resize', this.refresh.bind(this), false);
