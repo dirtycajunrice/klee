@@ -1,6 +1,6 @@
 {
   "name": "@dirtycajunrice/klee",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Unreal Engine Blueprint Visualizer for the Web",
   "main": "dist/index.js",
   "scripts": {
