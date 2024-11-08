@@ -50,6 +50,8 @@ export class PinProperty extends CustomProperty {
     hideName: boolean;
     showInHead: boolean;
 
+    serializeAsSinglePrecisionFloat: boolean;
+
     constructor(nodeName: string) {
         super();
         this.nodeName = nodeName;

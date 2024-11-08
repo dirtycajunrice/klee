@@ -13,7 +13,6 @@ export class NodeDataReferenceParser {
     parse(referenceString: string): NodeDataReference {
         referenceString = referenceString.trim();
         referenceString = referenceString.substr(1, referenceString.length - 2);
-
         let dataRef: NodeDataReference = {};
 
         const data = referenceString.split(',');
@@ -23,12 +22,11 @@ export class NodeDataReferenceParser {
 
             let key = dataSet[0];
             let value = dataSet[1];
-
             switch(key) {
                 case "MemberName": dataRef.memberName = this.translateFunctionName(BlueprintParserUtils.parseString(value)); break;
                 case "MemberParent": dataRef.memberParent = NodeDataReferenceParser.parseClassReference(value); break;
                 case "MemberGuid": dataRef.memberGUID = value; break;
-                case "bSelfContext": dataRef.selfContext = value == "True"; break;
+                case "bSelfContext": dataRef.selfContext = value === "True"; break;
             }
         }
 
@@ -41,7 +39,9 @@ export class NodeDataReferenceParser {
 
             value = value.replace(key, name);
         }
-
+        if (value.startsWith("BP_")) {
+            value = value.replace("BP_", "");
+        }
         return value;
     }
 

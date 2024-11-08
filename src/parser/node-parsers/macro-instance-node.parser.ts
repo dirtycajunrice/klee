@@ -50,7 +50,7 @@ export class MacroInstanceNodeParser extends NodeParser {
     }
 
     private static getIconForMacro(macroFuncName: string): string {
-        switch (macroFuncName) {
+        switch (macroFuncName.replace(/ /g, "")) {
             case 'ForLoop': return IconLibrary.LOOP;
             case 'ForLoopWithBreak': return IconLibrary.LOOP;
             case 'WhileLoop': return IconLibrary.LOOP;

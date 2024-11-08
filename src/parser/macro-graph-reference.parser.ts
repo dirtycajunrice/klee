@@ -35,8 +35,8 @@ export class MacroGraphReferenceParser {
     }
 
     private static extractNodeNameOfMacroGraphStr(value: string): string {
-        const stringWithoutQuotes = BlueprintParserUtils.parseString(value);
-        const matches = /(?<=\:)\w*/g.exec(stringWithoutQuotes);
+        const stringWithoutQuotes = BlueprintParserUtils.parseString(value).replace(/ /g, "");
+        const matches = /(?<=:)\w*/g.exec(stringWithoutQuotes);
         if(!matches) {
             return stringWithoutQuotes; 
         }

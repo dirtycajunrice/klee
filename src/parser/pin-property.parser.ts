@@ -60,6 +60,7 @@ export class PinPropertyParser implements CustomPropertyParser {
         "bNotConnectable": (p: PinProperty, value: string) => { p.notConnectable = (value.toLowerCase() === "true"); },
         "PersistentGuid": (p: PinProperty, value: string) => { p.persistentGUID = BlueprintParserUtils.parseString(value); },
         "PinType.ContainerType": (p: PinProperty, value: string) => { p.containerType = value as PinContainerType; },
+        "PinType.bSerializeAsSinglePrecisionFloat": (p: PinProperty, value: string) => { p.serializeAsSinglePrecisionFloat = (value.toLowerCase() === "true"); },
         "PinType.PinValueType": (p: PinProperty, value: string) => {
             value = value.replace(/[\(\)]/g, '');
             value = value.split('=')[1];
