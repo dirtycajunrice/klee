@@ -49,7 +49,7 @@ export class AsyncActionNodeParser extends NodeParser {
             icon = this.handleFunctionNode(node);
         }
         const matches = node.title.match(/K2Node_(.*)_[0-9]+/);
-        if (matches.length) {
+        if (matches && matches.length) {
             node.title = insertSpacesBetweenCapitalizedWords(matches[1]);
             icon = this.handleFunctionNode(node);
         }
