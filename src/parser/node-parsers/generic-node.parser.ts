@@ -135,7 +135,10 @@ export class GenericNodeParser extends NodeParser {
 
     this.parseCustomProperties(data);
 
-    const particularImplementation = this._nodeParsers[data.node.class];
+    let particularImplementation = this._nodeParsers[data.node.class];
+    if (!particularImplementation) {
+      particularImplementation = this.customK2NodeParser(data.node.class);
+    }
     if (!particularImplementation) {
       console.info(`There is no particular implementation for class ${data.node.class}. Falling back to the generic node class.`);
       return new HeadedNodeControl(data.node);
@@ -164,6 +167,13 @@ export class GenericNodeParser extends NodeParser {
       class: options.Class,
       name: options.Name,
     };
+  }
+
+  private customK2NodeParser(nodeClass: UnrealNodeClass): () => NodeParser {
+    const nodeClassParts = nodeClass.split(".");
+    if (nodeClassParts.length === 2 && nodeClassParts[1].startsWith("K2Node_")) {
+      return () => new AsyncActionNodeParser();
+    }
   }
 
   private parseCustomProperties(data: ParsingNodeData): void {

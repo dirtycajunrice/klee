@@ -48,7 +48,11 @@ export class AsyncActionNodeParser extends NodeParser {
         if (node.class === UnrealNodeClass.ASYNC_ACTION) {
             icon = this.handleFunctionNode(node);
         }
-
+        const matches = node.title.match(/K2Node_(.*)_[0-9]+/);
+        if (matches.length) {
+            node.title = insertSpacesBetweenCapitalizedWords(matches[1]);
+            icon = this.handleFunctionNode(node);
+        }
         const parser = AsyncActionNodeParser._FUNCTION_MAP[node.functionReference?.memberParent?.classPath];
         if (parser) return parser(data);
 
