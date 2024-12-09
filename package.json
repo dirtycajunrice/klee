@@ -1,6 +1,6 @@
 {
   "name": "@dirtycajunrice/klee",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "Unreal Engine Blueprint Visualizer for the Web",
   "main": "dist/index.js",
   "scripts": {
@@ -32,7 +32,7 @@
     }
   ],
   "peerDependencies": {
-    "react": "^18.3.1"
+    "react": "^18.3.1 || ^19"
   },
   "devDependencies": {
     "@types/react": "^18.3.5",
